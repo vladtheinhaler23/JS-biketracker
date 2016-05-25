@@ -1,0 +1,22 @@
+{
+  "name": "email",
+  "description": "",
+  "main": "index.js",
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "bootstrap": "^3.3.6",
+    "moment": "^2.13.0",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.37",
+    "jquery-ui": "^1.11.4",
+    "Chart.js": "^2.1.3"
+  }
+}
