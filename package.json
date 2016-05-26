@@ -13,6 +13,8 @@
   "license": "ISC",
   "dependencies": {
     "bower-files": "^3.13.1",
+    "dateformat": "^1.0.12",
+    "google-maps": "^3.2.1",
     "prompt": "^1.0.0"
   },
   "devDependencies": {

@@ -3,7 +3,8 @@
   <head>
     <link rel="stylesheet" href="build/css/vendor.css">
     <link rel="stylesheet" href="build/css/styles.css">
-    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="build/js/app.js"></script>
 
     <title>Bike Charts</title>
@@ -13,27 +14,36 @@
   <h1>Bike Charts</h1>
 </div>
     <div class="container">
-      <button class="pull-left clearfix btn btn-lg btn-success" id="colorSearch">Search Specific Color</button>
-      <button class="pull-right clearfix btn btn-lg btn-primary" id="allSearch">Search All Stolen Bikes</button>
+      <div class="mygroup">
+        <div class="btn-group ">
+          <button class="clearfix btn btn-lg btn-success" id="colorSearch">Search Specific Color</button>
+          <button class="clearfix btn btn-lg btn-primary" id="allSearch">Search All Stolen Bikes</button>
+          <button class="clearfix btn btn-lg btn-warning" id="random">View Random Bike</button>
+        </div>
+      </div>
+      <br>
+      <div id="picframe">
+      </div>
+      <h2 class="header"></h2>
       <div class="groupform">
       <form class="form myhidden" id="specificbike">
         <div class="form-group">
           <label for="color">Color of Bike:</label>
           <select required class="form-control" name="color" id="color">
             <option disabled class="myhidden" value="">--Please Select a Color--</option>
-            <option value="black">Black</option>
-            <option value="blue">Blue</option>
-            <option value="brown">Brown</option>
-            <option value="green">Green</option>
-            <option value="orange">Orange</option>
-            <option value="pink">Pink</option>
-            <option value="purple">Purple</option>
-            <option value="red">Red</option>
-            <option value="silver or gray">Silver or Gray</option>
-            <option value="Stickers tape or other cover-up">Stickers tape or other cover-up</option>
-            <option value="teal">Teal</option>
-            <option value="white">White</option>
-            <option value="yellow or gold">Yellow or Gold</option>
+            <option value="Black">Black</option>
+            <option value="Blue">Blue</option>
+            <option value="Brown">Brown</option>
+            <option value="Green">Green</option>
+            <option value="Orange">Orange</option>
+            <option value="Pink">Pink</option>
+            <option value="Purple">Purple</option>
+            <option value="Red">Red</option>
+            <option value="Silver or Gray">Silver or Gray</option>
+            <option value="Stickers Tape or Other Cover-up">Stickers tape or other cover-up</option>
+            <option value="Teal">Teal</option>
+            <option value="White">White</option>
+            <option value="Yellow or Gold">Yellow or Gold</option>
           </select>
         </div>
         <div class="form-group">
@@ -67,12 +77,21 @@
 
       <form class="form myhidden" id="bike">
         <div class="form-group">
+          <label for="sort">Sorted by:</label>
+          <select required class="form-control" name="sort" id="sort">
+            <option disabled class="myhidden" value="">--Please Select a Sort Option--</option>
+            <option value="1">By Color</option>
+            <option value="2">By Manufacturer</option>
+            <option value="3">By Frame Material(Takes a Long Time)</option>
+          </select>
+        </div>
+        <div class="form-group">
           <label for="zipcode">Zip Code:</label>
           <input type='number' class="form-control" id="zipcode2" name="zipcode" pattern="^\d{5}(?:[-\s]\d{4})?$"/>
         </div>
         <div class="form-group">
-          <label for="prox">Proximity:</label>
-          <select required class="form-control" name="prox" id="prox2">
+          <label for="prox2">Proximity:</label>
+          <select required class="form-control" name="prox2" id="prox2">
             <option disabled class="myhidden" value="">--Please Select a Proximity--</option>
             <option value="2">2 Mile Radius</option>
             <option value="5">5 Mile Radius</option>
@@ -83,9 +102,9 @@
           </select>
         </div>
         <div class="form-group">
-          <label for="datetimepicker1">Bikes Stolen After:</label>
+          <label for="datetimepicker2">Bikes Stolen After:</label>
             <div class='input-group date datetimepicker1' >
-                <input type='text' class="form-control" name="datetimepicker1" id="datetime2"/>
+                <input type='text' class="form-control" name="datetimepicker2" id="datetime2"/>
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>

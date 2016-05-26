@@ -1,11 +1,22 @@
+$gray : #d3d3d3;
+$green : #75B975;
+$bordercolor : #333;
+
 form{
   margin: 0 0.5% 0 0.5% ;
 }
 .jumbotron{
+  background-color: $bordercolor;
+  color: $gray;
+  text-align: center;
+  border-bottom: 5px solid $gray;
+}
+.header{
   text-align: center;
 }
 
 .btn {
+  text-align: center;
   margin:auto;
   display: block;
 }
@@ -19,25 +30,16 @@ img {
   display: block;
   margin: auto;
 }
-.btn-group{
-  text-align: center;
-  display: block;
-  margin: auto;
-}
-.btn{
+.mygroup{
   text-align: center;
 }
 .myhidden{
   display: none;
 }
 
-$gray : #d3d3d3;
-$green : #75B975;
-$bordercolor : #333;
-
 .container {
   border-radius: 2em;
   background: $gray;
-  border: 3px solid $bordercolor;
+
   padding: 40px 80px;
 }
