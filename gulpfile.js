@@ -20,7 +20,7 @@ var lib = require('bower-files')({
         "dist/fonts/*"
       ]
     }
-  }
+}
 });
 
 
