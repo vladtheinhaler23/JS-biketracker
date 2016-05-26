@@ -1,3 +1,4 @@
+var async = require("async");
 exports.stolenBikes = function(color, zipcode , prox, datetime, chartdisplay){
   $.get('https://bikeindex.org:443/api/v2/bikes_search/count?colors=' + color + '&proximity=' + zipcode + '&proximity_square=' + prox +'&stolen_after=' + datetime, function(response) {
     console.log(response);
@@ -39,26 +40,17 @@ var fillData = function(arrayOfColors, arrayOfResults, chartdisplay){
   chartdisplay(data);
 };
 exports.allStolenBikes = function(zipcode, prox, datetime, arrayOfColors, chartdisplay){
-  console.log(zipcode);
-  console.log(prox);
-  console.log(datetime);
-  console.log(arrayOfColors);
 
   var arrayOfResults = [];
-
-    for(var i = 0; i < arrayOfColors.length;){
-      var color = arrayOfColors[i];
-      $.get('https://bikeindex.org:443/api/v2/bikes_search/count?colors=' + arrayOfColors[i] + '&proximity=' + zipcode + '&proximity_square=' + prox +'&stolen_after=' + datetime).then(function(response) {
-        console.log(color);
-        console.log(response.proximity);
-        arrayOfResults[i] = response.proximity;
-        console.log(arrayOfResults[i]);
-        console.log(" hey" + arrayOfResults.length);
+    arrayOfColors.forEach(function(value, index){
+      $.get('https://bikeindex.org:443/api/v2/bikes_search/count?colors=' + value + '&proximity=' + zipcode + '&proximity_square=' + prox +'&stolen_after=' + datetime).then(function(response) {
+        arrayOfResults[index] = response.proximity;
         if(arrayOfResults.length === arrayOfColors.length){
           fillData(arrayOfColors, arrayOfResults, chartdisplay);
         }
-      }).then(i++);
-    }
+      });
+    });
+  };
             // $.get('https://bikeindex.org:443/api/v2/bikes_search/count?colors=black&proximity=' + zipcode + '&proximity_square=' + prox +'&stolen_after=' + datetime, function(response) {
             //   console.log(response.proximity);
             //   arrayOfResults[0] = response.proximity;
@@ -151,9 +143,3 @@ exports.allStolenBikes = function(zipcode, prox, datetime, arrayOfColors, chartd
             //     fillData(arrayOfColors, arrayOfResults, chartdisplay);
             //   }
             // });
-
-
-
-
-
-};
